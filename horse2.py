@@ -59,7 +59,7 @@ async def monies():
 
 
 
-TOKEN = "NTQzOTI3NDQ1NDAxODk0OTEz.D0DsZg.WvrAcsI9wweLYMQmBYZopLdEifI"
+TOKEN = ""
 @client.event
 async def on_ready():
     await client.change_presence(game=Game(name="with your mom"))
