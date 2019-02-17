@@ -25,14 +25,14 @@ async def eight_ball(context):
 
 
 @client.command(name='square',
-                description="squares the entered number")
+                brief="squares the entered number")
 async def square(number):
     squared_value = int(number) * int(number)
     await client.say(str(number) + " squared is " + str(squared_value))
 
 
 @client.command(name='bitcoin',
-                description="Pulls Bitcoin price")
+                brief="Pulls Bitcoin price")
 async def bitcoin():
     url = 'https://api.coindesk.com/v1/bpi/currentprice/BTC.json'
     response = requests.get(url)
@@ -42,12 +42,12 @@ async def bitcoin():
 
 
 @client.command(name='ticker',
-                description="Pulls stock price by using ticker")
+                brief="Pulls stock price by using ticker")
 async def ticker(monies):
     monies2 = Stock(monies)
     monies3 = monies2.get_price()
     await client.say("Latest stock price for " + str(monies) + " is $" + str(monies3))
-    
+
 
 
 
