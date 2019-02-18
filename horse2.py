@@ -30,23 +30,22 @@ async def square(number):
     squared_value = int(number) * int(number)
     await client.say(str(number) + " squared is " + str(squared_value))
 
-
+#Through 'import requests'  pulling from coindesk api
 @client.command(name='bitcoin',
                 brief="Pulls Bitcoin price")
 async def bitcoin():
     url = 'https://api.coindesk.com/v1/bpi/currentprice/BTC.json'
     response = requests.get(url)
     value = response.json()['bpi']['USD']['rate']
-    await client.say("Current Bitcoin price is: $" + value)
+    await client.say("Current Bitcoin price is: $" + value + " USD.")
 
-
-
+#Through iexfinance api
 @client.command(name='ticker',
                 brief="Pulls stock price by using ticker")
 async def ticker(monies):
-    monies2 = Stock(monies)
-    monies3 = monies2.get_price()
-    await client.say("Latest stock price for " + str(monies) + " is $" + str(monies3))
+    StockGrab = Stock(monies)
+    quote = StockGrab.get_price()
+    await client.say("Latest stock price for " + str(monies) + " is $" + str(quote))
 
 
 
