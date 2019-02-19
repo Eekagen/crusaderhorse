@@ -1,5 +1,7 @@
 import random
+#python -m pip install requests
 import requests
+#$ pip3 install iexfinance
 from iexfinance.stocks import Stock
 from discord.ext.commands import Bot
 from discord import Game
@@ -46,6 +48,7 @@ async def ticker(monies):
     StockGrab = Stock(monies)
     quote = StockGrab.get_price()
     await client.say("Latest stock price for " + str(monies) + " is $" + str(quote))
+
 
 
 
