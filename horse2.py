@@ -1,8 +1,11 @@
 import random
-#python -m pip install requests
+#python -m pip install requests-------------------
 import requests
-#$ pip3 install iexfinance
+#$ pip3 install iexfinance------------------------
 from iexfinance.stocks import Stock
+from datetime import datetime
+from iexfinance.stocks import get_historical_data
+#discord imports----------------------------------
 from discord.ext.commands import Bot
 from discord import Game
 
@@ -20,8 +23,8 @@ async def eight_ball(context):
         'That is a resounding no',
         'It is not looking likely',
         'Too hard to tell',
-        'It is quite possible',
-        'Definitely',
+        'Konno is a bitch',
+        'Norbert needs to die',
     ]
     await client.say(random.choice(possible_responses) + ", " + context.message.author.mention)
 
@@ -48,6 +51,24 @@ async def ticker(monies):
     StockGrab = Stock(monies)
     quote = StockGrab.get_price()
     await client.say("Latest stock price for " + str(monies) + " is $" + str(quote))
+
+
+#Through iexfinance api - Historical Data
+@client.command()
+async def histmonies(stock, yearS, monthS, dayS, yearE, monthE, dayE):
+    yearS1 = int(yearS)
+    monthS1 = int(monthS)
+    dayS1 = int(dayS)
+    yearE1 = int(yearE)
+    monthE1 = int(monthE)
+    dayE1 = int(dayE)
+    stock1 = str(stock)
+    start = datetime(yearS1, monthS1, dayS1)
+    end = datetime(yearE1, monthE1, dayE1)    
+    ticker = get_historical_data(stock1, start, end)
+    await client.say(ticker)
+
+
 
 
 
