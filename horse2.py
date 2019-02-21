@@ -54,7 +54,8 @@ async def ticker(monies):
 
 
 #Through iexfinance api - Historical Data
-@client.command()
+@client.command(name='histmonies',
+                brief="Sytanx example after client command: atvi 2019 2 19 2019 2 20.")
 async def histmonies(stock, yearS, monthS, dayS, yearE, monthE, dayE):
     yearS1 = int(yearS)
     monthS1 = int(monthS)
@@ -68,16 +69,14 @@ async def histmonies(stock, yearS, monthS, dayS, yearE, monthE, dayE):
     ticker = get_historical_data(stock1, start, end)
     await client.say(ticker)
 
-
-
-
-
-
-
-
-
-
-
+#Through iexfinance api - Historical data but pulls current day's open/high/low/close/volume
+@client.command(name='todaymonies',
+                brief="Pulls today's open/high/low/close/volume")
+async def todaymonies(stock):
+    stock1 = str(stock)
+    today = datetime.today().strftime('%Y %m %d')
+    ticker = get_historical_data(stock1, today, today)
+    await client.say(ticker)
 
 
 
